@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class Way implements Cell {
+public class Way extends Cells {
     private Image image;
     String path;
     @Override

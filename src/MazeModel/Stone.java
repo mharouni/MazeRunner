@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class Stone implements Wall {
+public class Stone extends Cells implements Wall {
     Image image = new Image("file:/C:/Users/MaramH/Desktop/Sprites/Sprite_BB.png");
     
     @Override

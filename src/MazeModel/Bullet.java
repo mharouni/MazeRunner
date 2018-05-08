@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class Bullet implements Movable, Cell {
+public class Bullet extends Cells implements Movable{
     private int dir;
     private Point position;
     private String path;

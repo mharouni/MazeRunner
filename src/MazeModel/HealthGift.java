@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class HealthGift implements Gift {
+public class HealthGift extends Cells  implements Gift {
     
     private String path;
     private Image image ; 

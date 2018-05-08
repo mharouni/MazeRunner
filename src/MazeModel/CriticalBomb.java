@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class CriticalBomb implements Bomb {
+public class CriticalBomb extends Cells implements Bomb {
     private String path;
     private Image image; 
     public void causeDamage()

@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class MildBomb implements Bomb {
+public class MildBomb extends Cells implements Bomb {
     private String path;
     private Image image ; 
     public void causeDamage()

@@ -6,13 +6,14 @@
 package MazeModel;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import javafx.scene.image.Image;
 
 /**
  *
  * @author omarahmedheshamaziz
  */
-public class Runner implements Movable, Cell {
+public class Runner extends Cells implements Movable {
     private int dir;
     private Point position;
     private int health=3;
@@ -127,7 +128,18 @@ public class Runner implements Movable, Cell {
     }
 
     
+    public void move()
     
+    {
+    
+        
+    
+    
+    }
+    public void keyPressed(KeyEvent e)
+    {}
+     public void keyReleased(KeyEvent e)
+    {}
     
     
 }

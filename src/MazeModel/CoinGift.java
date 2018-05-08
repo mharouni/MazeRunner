@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author omarahmedheshamaziz
  */
-public class CoinGift implements Gift {
+public class CoinGift extends Cells implements Gift  {
     private String path;
     private Image image ; 
     public void replenish()

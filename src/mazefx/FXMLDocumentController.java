@@ -8,6 +8,7 @@ package mazefx;
 import Controller.CellFactory;
 import Controller.Database;
 import MazeModel.Cell;
+import MazeModel.Cells;
 import MazeModel.Runner;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -35,6 +37,7 @@ public class FXMLDocumentController implements Initializable,ActionListener {
     Database d=new Database();
    int matrix[][]=d.readInit();
    Cell[][] maze=f.mazeFactory(matrix);
+   //Cells[30][30] mazelogic = new  ;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,18 +70,12 @@ public class FXMLDocumentController implements Initializable,ActionListener {
     private void step() {
        // Runner.move();
     }
+    
 
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-     private class TAdapter extends KeyAdapter{
-     public void keyReleased (KeyEvent e) {
-     //Runner.keyReleased(e);
-     }
-        public void keyPressed(KeyEvent e) {
-    // Runner.keyPressed(e);}
-     }
-    }    }
+        
+    }}
+    
 
 
