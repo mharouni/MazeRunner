@@ -13,7 +13,8 @@ import javafx.scene.image.Image;
  */
 public class MildBomb extends Cells implements Bomb {
     private String path;
-    private Image image ; 
+    private Image image=new Image(getClass().getResourceAsStream("bomb64.png")); 
+    @Override
     public void causeDamage()
     {
         int initHealth=Runner.getPlayer().getHealth();

@@ -2,30 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/ArmorGift.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/CriticalBomb.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Way.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/Controller/CellFactory.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/CoinGift.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Runner.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Gift.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/CellNode.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/mazefx/MazeFX.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/HealthGift.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/mazefx/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Wall.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Bomb.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/mazefx/FXMLDocument.fxml</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Bullet.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/Controller/Database.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Stone.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Gate.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/Maze_File</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Cell.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/Tree.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/MildBomb.java</file>
-            <file>file:/C:/Users/MaramH/Desktop/mazeFX/src/MazeModel/AmmoGift.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

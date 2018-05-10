@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  * @author omarahmedheshamaziz
  */
 public class Tree extends Cells implements Wall {
-    private Image image = new Image("file:/C:/Users/MaramH/Desktop/Sprites/tree.png"); 
+    private Image image = new Image(getClass().getResourceAsStream("tree.png")); 
     private String path;
     
     @Override
