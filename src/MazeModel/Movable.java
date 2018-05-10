@@ -12,9 +12,9 @@ import java.awt.Point;
  * @author omarahmedheshamaziz
  */
 public interface Movable {
-    public void setDirection(int dir);
+    public void setDirection(String dir);
     
-    public int getDirection();
+    public String getDirection();
     
     public void setPosition(Point p);
     
