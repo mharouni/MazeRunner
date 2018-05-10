@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -33,10 +33,7 @@ public class FXMLDocumentController implements Initializable,ActionListener {
     @FXML
     
     private GridPane pane;
-    CellFactory f= new CellFactory(); 
-    Database d=new Database();
-   int matrix[][]=d.readInit();
-   Cell[][] maze=f.mazeFactory(matrix);
+    
    //Cells[30][30] mazelogic = new  ;
     
     @Override
@@ -48,7 +45,7 @@ public class FXMLDocumentController implements Initializable,ActionListener {
    
     
     
-    int i,j;
+   /* int i,j;
      for(i = 0 ; i<30 ; i++)
      {
          for(j=0 ; j<30 ; j++)
@@ -60,7 +57,7 @@ public class FXMLDocumentController implements Initializable,ActionListener {
         img.setFitHeight(21);
          l.setGraphic(img);
          pane.add(l, j, i);
-     }}
+     }}*/
 }
     public void actionPerformed (ActionEvent e)
     {

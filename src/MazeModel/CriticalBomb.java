@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class CriticalBomb extends Cells implements Bomb {
     private String path;
-    private Image image; 
+    private final Image image = new Image (getClass().getResourceAsStream("bomb64.png")); 
     public void causeDamage()
     {
         int initHealth=Runner.getPlayer().getHealth();

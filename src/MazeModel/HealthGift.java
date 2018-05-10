@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 public class HealthGift extends Cells  implements Gift {
     
     private String path;
-    private Image image ; 
+    private Image image= new Image(getClass().getResourceAsStream("heart.png")); 
     public void replenish()
     {
         int initHealth = Runner.getPlayer().getHealth();

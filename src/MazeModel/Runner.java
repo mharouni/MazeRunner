@@ -7,23 +7,33 @@ package MazeModel;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
  * @author omarahmedheshamaziz
  */
 public class Runner extends Cells implements Movable {
+     InputStream inStream = getClass().getResourceAsStream("deadpool.png");
     private int dir;
     private Point position;
     private int health=3;
     private Weapon w=new Weapon();
-    private Image img = new Image("file:/C:/Users/MaramH/Desktop/Sprites/deadpool.png");;
+    private Image img = new Image(inStream);
     private static Runner Player;
     private int score=0;
+    public int row;
+    public int column;
+   
+    
+
+    
     private Runner()
     {
-        
+        row=0;
+        column=1;
     }
 
     public int getScore() {

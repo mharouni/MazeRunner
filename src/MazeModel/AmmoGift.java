@@ -30,7 +30,7 @@ public class AmmoGift extends Cells implements Gift  {
 
     @Override
     public boolean isWay() {
-        return false;
+        return true;
     }
 
     @Override
