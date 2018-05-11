@@ -18,6 +18,7 @@ import MazeModel.Runner;
 import MazeModel.Stone;
 import MazeModel.Tree;
 import MazeModel.Way;
+import javafx.scene.Node;
 
 /**
  *
@@ -64,6 +65,12 @@ public class CellFactory {
             return new CriticalBomb();
         else
             return new Gate();
+    }
+    
+    public int reverseFactory(Node n)
+    {
+        return 0;
+       // if(n.equals(Tree))
     }
     
 }

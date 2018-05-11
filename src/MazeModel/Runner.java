@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
  */
 public class Runner extends Cells implements Movable {
      InputStream inStream = getClass().getResourceAsStream("deadpool.png");
-    private int dir;
+    private String dir;
     private Point position;
     private int health=3;
     private Weapon w=new Weapon();
@@ -44,11 +44,11 @@ public class Runner extends Cells implements Movable {
         this.score = score;
     }
 
-    public int getDir() {
+    public String getDir() {
         return dir;
     }
 
-    public void setDir(int dir) {
+    public void setDir(String dir) {
         this.dir = dir;
     }
 
@@ -77,15 +77,7 @@ public class Runner extends Cells implements Movable {
     
 
     
-    @Override
-    public void setDirection(int dir) {
-        this.dir=dir; 
-    }
 
-    @Override
-    public int getDirection() {
-        return this.dir;
-    }
 
     @Override
     public void setPosition(Point p) {
@@ -129,12 +121,12 @@ public class Runner extends Cells implements Movable {
 
     @Override
     public void setSpriteLink(String path) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     
     }
 
     @Override
     public String getSpriteLink() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     
@@ -150,6 +142,17 @@ public class Runner extends Cells implements Movable {
     {}
      public void keyReleased(KeyEvent e)
     {}
+
+    @Override
+    public void setDirection(String dir) {
+    }
+
+    @Override
+    public String getDirection() {
+      return null;
+    }
+
+   
     
     
 }

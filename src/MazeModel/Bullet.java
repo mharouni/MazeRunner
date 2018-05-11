@@ -6,6 +6,7 @@
 package MazeModel;
 
 import java.awt.Point;
+import java.io.InputStream;
 import javafx.scene.image.Image;
 
 /**
@@ -13,10 +14,13 @@ import javafx.scene.image.Image;
  * @author omarahmedheshamaziz
  */
 public class Bullet extends Cells implements Movable{
-    private int dir;
+    private String dir;
     private Point position;
+     InputStream inStream = getClass().getResourceAsStream("new_bullet.png");
     private String path;
-    private Image image; 
+    public int row;
+    public int column;
+    private Image image= new Image(inStream); 
     @Override
     public boolean isHarmful() {
         return true;
@@ -51,12 +55,12 @@ public class Bullet extends Cells implements Movable{
 
     
     @Override
-    public void setDirection(int dir) {
+    public void setDirection(String dir) {
         this.dir=dir; 
     }
 
     @Override
-    public int getDirection() {
+    public String getDirection() {
         return this.dir;
     }
 
@@ -74,7 +78,7 @@ public class Bullet extends Cells implements Movable{
 
     @Override
     public Image getImage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.image;
     }
     
     
