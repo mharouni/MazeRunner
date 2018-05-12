@@ -47,7 +47,7 @@ public class MazeFX extends Application {
         CustomPane runnerPane = new CustomPane();
         Node current;
         //runnerPane.set
-        ImageView view = new ImageView("file:/C:/Users/MaramH/Desktop/649675876.jpg");
+       // ImageView view = new ImageView("file:/C:/Users/MaramH/Desktop/649675876.jpg");
         objectsPane.setStyle("-fx-background-color: GREEN");
         runnerPane.setStyle("-fx-background-color: transparent");
         int i, j;
@@ -279,7 +279,7 @@ public class MazeFX extends Application {
 
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+      //  Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         stage.setScene(scene);
         stage.show();
 
