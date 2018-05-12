@@ -18,9 +18,16 @@ public class HealthGift extends Cells  implements Gift {
     public void replenish()
     {
         int initHealth = Runner.getPlayer().getHealth();
-        initHealth++;
+        if(initHealth<3)
+            initHealth++;
         Runner.getPlayer().setHealth(initHealth);
+        System.out.println(initHealth);
                 
+    }
+    
+    @Override
+    public boolean isUseful() {
+        return true;
     }
     
     @Override
@@ -30,7 +37,7 @@ public class HealthGift extends Cells  implements Gift {
 
     @Override
     public boolean isWay() {
-        return false;
+        return true;
     }
 
     @Override

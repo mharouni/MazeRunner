@@ -19,7 +19,10 @@ public class Tree extends Cells implements Wall {
     public boolean isHarmful() {
         return false;
     }
-
+ @Override
+    public boolean isUseful() {
+        return false;
+    }
     @Override
     public boolean isWay() {
         return false;

@@ -58,5 +58,10 @@ public class AmmoGift extends Cells implements Gift  {
     public Image getImage() {
        return image;
     }
+
+    @Override
+    public boolean isUseful() {
+        return true;
+    }
     
 }

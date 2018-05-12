@@ -7,6 +7,7 @@ package mazefx;
 
 import Controller.CellFactory;
 import Controller.Database;
+import Controller.Interactions;
 import MazeModel.*;
 import MazeModel.Runner;
 import com.sun.javafx.geom.BaseBounds;
@@ -14,20 +15,25 @@ import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
 import com.sun.javafx.jmx.MXNodeAlgorithmContext;
 import com.sun.javafx.sg.prism.NGNode;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -38,72 +44,72 @@ public class MazeFX extends Application {
 
     CellFactory f = new CellFactory();
     Database d = new Database();
-    int matrix[][] = d.readInit();
-    Cell[][] maze = f.mazeFactory(matrix);
+    int initmatrix[][] = d.readInit();
+    int currentMatrix[][] = initmatrix;
+    Cell[][] maze = f.mazeFactory(initmatrix);
+    Interactions check = new Interactions();
+    GridPane objectsPane = new GridPane();
+        GridPane runnerPane = new GridPane();
+        GridPane observerPane = new GridPane();
+        Node current;
+        Pane borderPane = new Pane();
 
     @Override
     public void start(Stage stage) throws Exception {
-        GridPane objectsPane = new GridPane();
-        CustomPane runnerPane = new CustomPane();
-        Node current;
+                //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        
+   
+              
+     
+        
         //runnerPane.set
        // ImageView view = new ImageView("file:/C:/Users/MaramH/Desktop/649675876.jpg");
         objectsPane.setStyle("-fx-background-color: GREEN");
         runnerPane.setStyle("-fx-background-color: transparent");
-        int i, j;
-        for (i = 0; i < 30; i++) {
-            for (j = 0; j < 30; j++) {//Label l = new Label();
+        observerPane.setStyle("-fx-background-color: transparent");
+        initializeMaze();
+     Label l = new Label("Lives");
+     l.setStyle("-fx-background-color: white");
+    ImageView img2 = new ImageView(new HealthGift().getImage());
+                            img2.setFitWidth(35);
 
-                Image image = maze[i][j].getImage();
-                ImageView img = new ImageView(image);
-                img.setFitWidth(35);
-                img.setFitHeight(21);
-                //l.setGraphic(img);
-                objectsPane.add(img, j, i);
-            }
-        }
-        for (i = 0; i < 30; i++) {
-            for (j = 0; j < 30; j++) {
-                Image image = null;
-                ImageView img = new ImageView(image);
-                img.setFitWidth(35);
-                img.setFitHeight(21);
-                runnerPane.add(img, j, i);
-            }
-        }
-        Cell cell = f.cellFactory(3);
-        Image image = Runner.getPlayer().getImage();
-        ImageView img = new ImageView(image);
-        img.setFitWidth(35);
-        img.setFitHeight(21);
-        current = img;
-        //runnerPane.getChildren().remove(1);
-        runnerPane.add(img, 1, 0);
-        Pane borderPane = new Pane();
-        borderPane.getChildren().add(objectsPane);
-        borderPane.getChildren().add(runnerPane);
+                            img2.setFitHeight(21);
+                              ImageView img3 =  new ImageView(new HealthGift().getImage());
+                            img3.setFitWidth(35);
 
+                            img3.setFitHeight(21);
+     observerPane.add(img2 , 29, 0);
+     observerPane.add(img3 , 28, 0);
+   //  observerPane.add(img2 , 27, 0);
+observerPane.add(l , 26, 0);
         Scene scene = new Scene(borderPane);
         try {
+            Image image = Runner.getPlayer().getImage();
             scene.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.UP) {
+                    Runner.getPlayer().setDir("up");
                     if (Runner.getPlayer().row > 0) {
 
                         if (maze[Runner.getPlayer().row - 1][Runner.getPlayer().column].isWay()) {
-                            Runner.getPlayer().setDir("up");
+                            
                             Node temp = current;
                             runnerPane.getChildren().remove(current);
 
                      //       Image image1 = Runner.getPlayer().getImage();
                             ImageView img1 = new ImageView(image);
-
                             img1.setFitWidth(35);
+
                             img1.setFitHeight(21);
 
                             runnerPane.add(temp, Runner.getPlayer().column, Runner.getPlayer().row - 1);
 
                             Runner.getPlayer().row--;
-                            //runnerPane.getChildren().remove(maze[Runner.getPlayer().row-1] [Runner.getPlayer().column].getImage());
+                            if(check.checkBombs(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            if(check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            drawMaze();
                         }
                     }
                 } else if (event.getCode() == KeyCode.DOWN) {
@@ -123,6 +129,11 @@ public class MazeFX extends Application {
                         runnerPane.add(temp, Runner.getPlayer().column, Runner.getPlayer().row + 1);
 
                         Runner.getPlayer().row++;
+                        if(check.checkBombs(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            if(check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            drawMaze();
                         if (Runner.getPlayer().row == 29) {
                             new Alert(Alert.AlertType.INFORMATION, "GOAL!").showAndWait();
                         }
@@ -145,6 +156,11 @@ public class MazeFX extends Application {
                         runnerPane.add(temp, Runner.getPlayer().column + 1, Runner.getPlayer().row);
 
                         Runner.getPlayer().column++;
+                      if(check.checkBombs(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            if(check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            drawMaze();
                     }
 
                 } else if (event.getCode() == KeyCode.LEFT) {
@@ -163,6 +179,11 @@ public class MazeFX extends Application {
                         runnerPane.add(temp, Runner.getPlayer().column - 1, Runner.getPlayer().row);
 
                         Runner.getPlayer().column--;
+                        if(check.checkBombs(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            if(check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column]))
+                                currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column]=0;
+                            drawMaze();
                     }
                 } else if (event.getCode() == KeyCode.SPACE) {
              
@@ -180,86 +201,98 @@ public class MazeFX extends Application {
                     switch (Runner.getPlayer().getDir()) {
                         case "up":
                         
-                            while (maze[shot.row - 1][shot.column].isWay()) {
+                            while (maze[shot.row - 1][shot.column].isWay() && !maze[shot.row - 1][shot.column].isUseful() && !maze[shot.row - 1][shot.column].isHarmful()) {
                                 
-                                Node temp = current2;
+                                currentMatrix[shot.row - 1][shot.column]=8;
+                                currentMatrix[shot.row][shot.column]=0;
+                                drawMaze();
                                 
-                                runnerPane.getChildren().remove(current2);
-                          
-
-                             
-                                ImageView img1 = new ImageView(imageb);
-
-                                img1.setFitWidth(35);
-                                img1.setFitHeight(21);
-                       
-                       
-                                runnerPane.add(temp, shot.column, shot.row-1,500);
 
                                 shot.row--;
                                 
                       
 
                             }
-                            current2 = imgb;
-                            runnerPane.getChildren().remove(current2);
-                            break;
-                        case "down":
-                             while (maze[shot.row + 1][shot.column].isWay()) {
-                                
-                                Node temp = current2;
-                                runnerPane.getChildren().remove(current2);
-
-                                Image image1 = shot.getImage();
-                                ImageView img1 = new ImageView(imageb);
-
-                                img1.setFitWidth(35);
-                                img1.setFitHeight(21);
-
-                                runnerPane.add(temp, shot.column, shot.row + 1);
-
-                                shot.row++;}
-                               current2 = imgb;
-                            runnerPane.getChildren().remove(current2);
-                            break;
-                        case "left":
-                              while (maze[shot.row ][shot.column-1].isWay()) {
-                                
-                                Node temp = current2;
-                                runnerPane.getChildren().remove(current2);
-
-                                Image image1 = shot.getImage();
-                                ImageView img1 = new ImageView(imageb);
-
-                                img1.setFitWidth(35);
-                                img1.setFitHeight(21);
-
-                                runnerPane.add(temp, shot.column-1, shot.row);
-
-                                shot.column--;}
-                               current2 = imgb;
-                            runnerPane.getChildren().remove(current2);
-                            break;
-                        case "right":
-                             while (maze[shot.row ][shot.column+1].isWay()) {
-                                
-                                Node temp = current2;
-                                runnerPane.getChildren().remove(current2);
-
-                                Image image1 = shot.getImage();
-                                ImageView img1 = new ImageView(imageb);
-
-                                img1.setFitWidth(35);
-                                img1.setFitHeight(21);
-
-                                runnerPane.add(temp, shot.column+1, shot.row);
-
-                                shot.column++;
-                             }
-                               current2 = imgb;
-                            runnerPane.getChildren().remove(current2);
+                           
+                            if(maze[shot.row - 1][shot.column].isDestructible())
+                                currentMatrix[shot.row - 1][shot.column]=0;
+                            drawMaze();
+                            
+                   
+                            currentMatrix[shot.row][shot.column]=0;
+                                     
                             
                             break;
+                        case "down":
+                             while (maze[shot.row+1][shot.column].isWay() && !maze[shot.row+1][shot.column].isUseful() && !maze[shot.row+1][shot.column].isHarmful()) {
+                                
+                                currentMatrix[shot.row+1][shot.column]=8;
+                                currentMatrix[shot.row][shot.column]=0;
+                                drawMaze();
+                                
+
+                                shot.row++;
+                                
+                      
+
+                            }
+                           
+                            if(maze[shot.row+1][shot.column].isDestructible())
+                                currentMatrix[shot.row+1][shot.column]=0;
+                            drawMaze();
+                            
+                   
+                            currentMatrix[shot.row][shot.column]=0;
+                                     
+                            
+                            break;
+                        case "left":
+                                while (maze[shot.row][shot.column-1].isWay() && !maze[shot.row][shot.column-1].isUseful() && !maze[shot.row][shot.column-1].isHarmful()) {
+                                
+                                currentMatrix[shot.row][shot.column-1]=8;
+                                currentMatrix[shot.row][shot.column]=0;
+                                drawMaze();
+                                
+
+                                shot.column--;
+                                
+                      
+
+                            }
+                           
+                            if(maze[shot.row][shot.column-1].isDestructible())
+                                currentMatrix[shot.row][shot.column-1]=0;
+                            drawMaze();
+                            
+                   
+                            currentMatrix[shot.row][shot.column]=0;
+                                     
+                            
+                            break;
+                        case "right":
+                             while (maze[shot.row][shot.column+1].isWay() && !maze[shot.row][shot.column+1].isUseful() && !maze[shot.row][shot.column+1].isHarmful()) {
+                                
+                                currentMatrix[shot.row][shot.column+1]=8;
+                                currentMatrix[shot.row][shot.column]=0;
+                                drawMaze();
+                                
+
+                                shot.column++;
+                                
+                      
+
+                            }
+                           
+                            if(maze[shot.row][shot.column+1].isDestructible())
+                                currentMatrix[shot.row][shot.column+1]=0;
+                            drawMaze();
+                            
+                   
+                            currentMatrix[shot.row][shot.column]=0;
+                                     
+                            
+                            break;
+                            
 
                     }
                    
@@ -268,10 +301,7 @@ public class MazeFX extends Application {
                             new Alert(Alert.AlertType.INFORMATION, "Game Paused \n Press Okay To Continue").showAndWait();}
                 else if (event.getCode() == KeyCode.S)
                 {
-                    for(Node n: objectsPane.getChildren())
-                    {
-                        f.reverseFactory(n);
-                    }
+                    d.save(currentMatrix);
                 }
                 event.consume();
             });
@@ -280,35 +310,89 @@ public class MazeFX extends Application {
         }
 
       //  Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        stage.setScene(scene);
-        stage.show();
+      stage.setScene(scene);
+       stage.show();
 
     }
 
-    public class CustomPane extends GridPane
-    {
-        public void add(Node child, int row, int column, int time)
-        {
-            
-            
-            super.add(child, row, column);
-            try {
-                this.wait(time);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MazeFX.class.getName()).log(Level.SEVERE, null, ex);}
+   public void initializeMaze()
+   {
+       int i, j;
+        for (i = 0; i < 30; i++) {
+            for (j = 0; j < 30; j++) {//Label l = new Label();
+
+                Image image = maze[i][j].getImage();
+                ImageView img = new ImageView(image);
+                img.setFitWidth(35);
+                img.setFitHeight(21);
+                //l.setGraphic(img);
+                objectsPane.add(img, j, i);
+            }
         }
-    }
-    /**
-     * @param args the command line arguments
-     */
+        for (i = 0; i < 30; i++) {
+            for (j = 0; j < 30; j++) {
+                Image image = null;
+                ImageView img = new ImageView(image);
+                img.setFitWidth(35);
+                img.setFitHeight(21);
+                runnerPane.add(img, j, i);
+            }
+        }
+        for (i = 0; i < 30; i++) {
+            for (j = 0; j < 30; j++) {
+                Image image = null;
+                ImageView img = new ImageView(image);
+                img.setFitWidth(35);
+                img.setFitHeight(21);
+                observerPane.add(img, j, i);
+            }
+        }
+       // Cell cell = f.cellFactory(3);
+        Image image = Runner.getPlayer().getImage();
+        ImageView img = new ImageView(image);
+        img.setFitWidth(35);
+        img.setFitHeight(21);
+        current = img;
+        //runnerPane.getChildren().remove(1);
+        runnerPane.add(img, 1, 0);
+        
+        borderPane.getChildren().add(objectsPane);
+        borderPane.getChildren().add(runnerPane);
+        borderPane.getChildren().add(observerPane);
+   }
+   
+   public void drawMaze()
+   {
+       
+       maze=f.mazeFactory(currentMatrix);
+       objectsPane.getChildren().clear();
+       int i, j;
+        for (i = 0; i < 30; i++) {
+            for (j = 0; j < 30; j++) {//Label l = new Label();
 
+                Image image = maze[i][j].getImage();
+                ImageView img = new ImageView(image);
+                img.setFitWidth(35);
+                img.setFitHeight(21);
+                //l.setGraphic(img);
+                objectsPane.add(img, j, i);
+            }
+        }
+        
+        objectsPane.requestLayout();
+       
+   }
     public static void main(String[] args) {
-        try {
-            launch(args);
-        } catch (ArrayIndexOutOfBoundsException e) {
+      
+try{
+  
+        launch(args);
+    
+}catch(ArrayIndexOutOfBoundsException e){}
+       
 
         }
-
-    }
 
 }
+
+

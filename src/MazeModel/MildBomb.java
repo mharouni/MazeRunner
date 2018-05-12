@@ -20,8 +20,12 @@ public class MildBomb extends Cells implements Bomb {
         int initHealth=Runner.getPlayer().getHealth();
         initHealth-=1;
         Runner.getPlayer().setHealth(initHealth);
+        System.out.println(initHealth);
     }
-    
+     @Override
+    public boolean isUseful() {
+        return false;
+    }
     
     @Override
     public boolean isHarmful() {
@@ -30,7 +34,7 @@ public class MildBomb extends Cells implements Bomb {
 
     @Override
     public boolean isWay() {
-        return false;
+        return true;
     }
 
     @Override

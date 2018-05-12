@@ -20,7 +20,10 @@ public class CriticalBomb extends Cells implements Bomb {
         initHealth-=2;
         Runner.getPlayer().setHealth(initHealth);
     }
-    
+     @Override
+    public boolean isUseful() {
+        return false;
+    }
     @Override
     public boolean isHarmful() {
         return true;
@@ -28,7 +31,7 @@ public class CriticalBomb extends Cells implements Bomb {
 
     @Override
     public boolean isWay() {
-        return false;
+        return true;
     }
 
     @Override

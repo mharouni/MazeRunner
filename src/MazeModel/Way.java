@@ -23,7 +23,10 @@ public class Way extends Cells {
     public boolean isWay() {
         return true;
     }
-
+ @Override
+    public boolean isUseful() {
+        return false;
+    }
     @Override
     public boolean isWall() {
         return false;

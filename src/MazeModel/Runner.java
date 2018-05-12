@@ -26,6 +26,7 @@ public class Runner extends Cells implements Movable {
     private int score=0;
     public int row;
     public int column;
+    public int speed=2;
    
     
 
@@ -128,7 +129,10 @@ public class Runner extends Cells implements Movable {
     public String getSpriteLink() {
         return null;
     }
-
+ @Override
+    public boolean isUseful() {
+        return false;
+    }
     
     public void move()
     

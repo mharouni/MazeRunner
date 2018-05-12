@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Originator {
     private int[][] array = new int[30][30];
 
-    public void setCan(int[][] array) {
+    public void setMatrix(int[][] array) {
         this.array=array;
     }
     public Memento createMemento()

@@ -81,6 +81,15 @@ public class Bullet extends Cells implements Movable{
         return this.image;
     }
     
+    @Override
+    public boolean isUseful() {
+        return false;
+    }
+    
+    public void destroy(int x)
+    {
+        x=0;
+    }
     
     
 }

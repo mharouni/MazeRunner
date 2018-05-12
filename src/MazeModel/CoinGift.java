@@ -20,6 +20,10 @@ public class CoinGift extends Cells implements Gift  {
         initScore+=5;
         Runner.getPlayer().setScore(initScore);
     }
+    @Override
+    public boolean isUseful() {
+        return true;
+    }
     
     @Override
     public boolean isHarmful() {

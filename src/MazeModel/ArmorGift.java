@@ -55,4 +55,8 @@ public class ArmorGift extends Cells implements Gift {
        return image;
     }
     
+    @Override
+    public boolean isUseful() {
+        return true;
+    }
 }

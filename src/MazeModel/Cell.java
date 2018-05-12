@@ -20,6 +20,8 @@ public interface Cell {
     
     public boolean isDestructible();
     
+    public boolean isUseful();
+    
     public void setSpriteLink(String path);
     
     public String getSpriteLink();

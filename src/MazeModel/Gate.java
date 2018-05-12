@@ -18,7 +18,10 @@ public class Gate implements Cell {
     public boolean isHarmful() {
         return false;
     }
-
+ @Override
+    public boolean isUseful() {
+        return false;
+    }
     @Override
     public boolean isWay() {
         return false;
