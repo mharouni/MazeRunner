@@ -16,6 +16,9 @@ public class CriticalBomb extends Cells implements Bomb {
     private final Image image = new Image (getClass().getResourceAsStream("bomb64.png")); 
     public void causeDamage()
     {
+                int s = Runner.getPlayer().getScore();
+        s-=100;
+        Runner.getPlayer().setScore(s);
         int initHealth=Runner.getPlayer().getHealth();
         if((Runner.getPlayer().immune()))
             Runner.getPlayer().setCurrentState(new VulnerableRunner());

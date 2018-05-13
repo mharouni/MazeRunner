@@ -20,6 +20,9 @@ public class AmmoGift extends Cells implements Gift  {
         if(initAmmo<6)
             initAmmo++;
         Runner.getPlayer().getW().setAmmo(initAmmo);
+        int s = Runner.getPlayer().getScore();
+        s+=100;
+        Runner.getPlayer().setScore(s);
         
     }
     

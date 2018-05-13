@@ -19,6 +19,9 @@ public class CoinGift extends Cells implements Gift  {
         int initScore= Runner.getPlayer().getScore();
         initScore+=5;
         Runner.getPlayer().setScore(initScore);
+                int s = Runner.getPlayer().getScore();
+        s+=50;
+        Runner.getPlayer().setScore(s);
     }
     @Override
     public boolean isUseful() {
