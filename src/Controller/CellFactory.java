@@ -48,7 +48,7 @@ public class CellFactory {
         else if(x==2)
             return new Tree();
         else if(x==3)
-            return Runner.getPlayer();
+            return new CriticalBomb();
         else if(x==4)
             return new AmmoGift();
         else if(x==5)
@@ -61,7 +61,7 @@ public class CellFactory {
             return new Bullet();
         else if(x==9)
             return new MildBomb();
-        else if(x==10)
+        else if(x=='A')
             return new CriticalBomb();
         else
             return new Gate();

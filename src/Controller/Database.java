@@ -8,6 +8,7 @@ package Controller;
 import Checkpoint.Caretaker;
 import Checkpoint.Memento;
 import Checkpoint.Originator;
+import MazeModel.Runner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -59,11 +60,37 @@ public class Database {
                 out.println();
                 System.out.println();
             }
+            out.printf("%d %d ", Runner.getPlayer().row , Runner.getPlayer().column);
+            
             out.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+    }
+    
+    
+    public int[][] load()
+    {
+         int[][] matrix = new int[30][30];
+        try {
+            Scanner scanner= new Scanner(new File("CheckPoint_File"));
+            for(int i=0;i<30;i++)
+            {
+                for(int j=0;j<30;j++)
+                {
+                    matrix[i][j]=scanner.nextInt();
+                    System.out.printf("%d ",matrix[i][j]);
+                }
+                System.out.println();
+            }
+            Runner.getPlayer().row = scanner.nextInt();
+            Runner.getPlayer().column = scanner.nextInt();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return matrix;
     }
 }
         

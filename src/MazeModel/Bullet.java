@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
 public class Bullet extends Cells implements Movable{
     private String dir;
     private Point position;
-     InputStream inStream = getClass().getResourceAsStream("new_bullet.png");
+     InputStream inStream = getClass().getResourceAsStream("lightsabericongreen.png");
     private String path;
     public int row;
     public int column;

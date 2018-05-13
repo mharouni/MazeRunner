@@ -17,11 +17,7 @@ public class HealthGift extends Cells  implements Gift {
     private Image image= new Image(getClass().getResourceAsStream("heart.png")); 
     public void replenish()
     {
-        int initHealth = Runner.getPlayer().getHealth();
-        if(initHealth<3)
-            initHealth++;
-        Runner.getPlayer().setHealth(initHealth);
-        System.out.println(initHealth);
+        Runner.getPlayer().h.update(1);
                 
     }
     

@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MazeModel;
+package Controller;
+
+import MazeModel.Runner;
 
 /**
  *
  * @author MaramH
  */
-public interface RunnerState {
-    
-    public boolean immune( );
+public interface Observer {
+    public void update(int x);
 }
