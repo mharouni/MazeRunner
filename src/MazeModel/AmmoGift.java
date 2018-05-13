@@ -13,16 +13,14 @@ import javafx.scene.image.Image;
  */
 public class AmmoGift extends Cells implements Gift  {
     private String path;
-    private Image image ; 
+    private Image image= new Image(getClass().getResourceAsStream("lightsabericongreen.png"));
     public void replenish()
     {
         int initAmmo=Runner.getPlayer().getW().getAmmo();
         if(initAmmo<6)
             initAmmo++;
         Runner.getPlayer().getW().setAmmo(initAmmo);
-        int s = Runner.getPlayer().getScore();
-        s+=100;
-        Runner.getPlayer().setScore(s);
+        Runner.getPlayer().s.update(100);
         
     }
     

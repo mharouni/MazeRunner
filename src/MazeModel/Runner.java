@@ -5,6 +5,8 @@
  */
 package MazeModel;
 
+import Controller.Health;
+import Controller.Score;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ import javafx.scene.image.ImageView;
  * @author omarahmedheshamaziz
  */
 public class Runner extends Cells implements Movable {
-     InputStream inStream = getClass().getResourceAsStream("deadpool.png");
+     InputStream inStream = getClass().getResourceAsStream("princessleia (1).png");
     private String dir;
     private Point position;
     private int health=3;
@@ -28,12 +30,14 @@ public class Runner extends Cells implements Movable {
     public int column;
     public int speed=2;
     private RunnerState currentState;
-   
+   public Health h= new Health(3);
+   public Score s = new Score(0);
     
 
     
     private Runner()
     {
+
         row=0;
         column=1;
         currentState= new VulnerableRunner();

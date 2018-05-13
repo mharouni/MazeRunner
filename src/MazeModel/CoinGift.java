@@ -13,15 +13,11 @@ import javafx.scene.image.Image;
  */
 public class CoinGift extends Cells implements Gift  {
     private String path;
-    private Image image ; 
+     private Image image= new Image(getClass().getResourceAsStream("goldCoin5.png"));
     public void replenish()
     {
-        int initScore= Runner.getPlayer().getScore();
-        initScore+=5;
-        Runner.getPlayer().setScore(initScore);
-                int s = Runner.getPlayer().getScore();
-        s+=50;
-        Runner.getPlayer().setScore(s);
+
+         Runner.getPlayer().s.update(100);
     }
     @Override
     public boolean isUseful() {
