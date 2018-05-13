@@ -17,8 +17,12 @@ public class CriticalBomb extends Cells implements Bomb {
     public void causeDamage()
     {
         int initHealth=Runner.getPlayer().getHealth();
-        initHealth-=2;
+        if((Runner.getPlayer().immune()))
+            Runner.getPlayer().setCurrentState(new VulnerableRunner());
+        else
+            initHealth-=2;
         Runner.getPlayer().setHealth(initHealth);
+        System.out.println(initHealth);
     }
      @Override
     public boolean isUseful() {

@@ -27,6 +27,7 @@ public class Runner extends Cells implements Movable {
     public int row;
     public int column;
     public int speed=2;
+    private RunnerState currentState;
    
     
 
@@ -35,6 +36,16 @@ public class Runner extends Cells implements Movable {
     {
         row=0;
         column=1;
+        currentState= new VulnerableRunner();
+    }
+
+    public void setCurrentState(RunnerState currentState) {
+        this.currentState = currentState;
+    }
+    
+    public boolean immune()
+    {
+       return currentState.immune();
     }
 
     public int getScore() {

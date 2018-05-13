@@ -16,7 +16,7 @@ public class ArmorGift extends Cells implements Gift {
     private Image image ; 
     public void replenish()
     {
-        //Apply Decorator DP
+        Runner.getPlayer().setCurrentState(new ImmuneRunner());
     }
     
     @Override
