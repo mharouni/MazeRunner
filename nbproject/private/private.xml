@@ -2,6 +2,45 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/Interactions.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Cells.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/TimerThread.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/Maze_File</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Bullet.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/CheckPoint_File</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/WeaponDecorator.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/CellFactory.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/VulnerableRunner.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Type.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/mazefx/MazeFX.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Bomb.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/AmmoGift.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Stone.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/HealthGift.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/Database.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/Gun.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Way.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/CooardinateSystem.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/CriticalBomb.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Weapon.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Checkpoint/Originator.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/ImmuneRunner.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/mazefx/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Cell.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Gift.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Controller/Health.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Checkpoint/Caretaker.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Runner.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/Checkpoint/Memento.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/CoinGift.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/RunnerState.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/mazefx/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/MildBomb.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Tree.java</file>
+            <file>file:/C:/Users/MaramH/Desktop/MazeRunnerfx/src/MazeModel/Gate.java</file>
+        </group>
     </open-files>
 </project-private>

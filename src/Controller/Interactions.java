@@ -24,11 +24,18 @@ public class Interactions {
     {
         if(x.isUseful())
         {   
-            
+         ((Gift)x).replenish();
          AmmoGift  r= new AmmoGift(Runner.getPlayer());
          r.Reload();
             return true;
         }
         return false;
+        
+    }
+    public boolean checkDead()
+    {
+        if (Runner.getPlayer().h.h==0)
+            return true;
+        else return false;
     }
 }
