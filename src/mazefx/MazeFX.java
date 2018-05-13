@@ -8,6 +8,7 @@ package mazefx;
 import Controller.CellFactory;
 import Controller.Database;
 import Controller.Interactions;
+import Controller.TimerThread;
 import MazeModel.*;
 import MazeModel.Runner;
 import com.sun.javafx.geom.BaseBounds;
@@ -58,13 +59,13 @@ public class MazeFX extends Application {
     int initmatrix[][] = d.readInit();
     int currentMatrix[][] = initmatrix;
     Cell[][] maze = f.mazeFactory(initmatrix);
+    static TimerThread t = new TimerThread();
 
-    Timer timer = new Timer();
-    int seconds = 0;
-    //SimpleStringProperty sec = new SimpleStringProperty(String.valueOf(seconds));
-    String text;
+
      
-     TextField notification = new TextField ();
+
+       TextField score = new TextField ();
+         TextField health = new TextField ();
      
   
    
@@ -91,6 +92,14 @@ public class MazeFX extends Application {
     GridPane observerPane = new GridPane();
     Node current;
     Pane borderPane = new Pane();
+    Label label1 = new Label("Health:");
+    Label label2 = new Label("Score:");
+    Label label3 = new Label("Press S To Save");
+    Label label4 = new Label("Press L To Load");
+    Label labelHealth = new Label();
+    Label labelScore = new Label();
+    Label label5 = new Label("Press P To Pause");
+    
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -120,15 +129,27 @@ public class MazeFX extends Application {
         img4.setFitWidth(35);
 
         img4.setFitHeight(21);
-        //runTimer();
-      notification.setStyle("-fx-background-color: white");
-      notification.setEditable(false);
-      
-        //observerPane.add(notification, 39, 1);
-       // observerPane.add(img2, 39, 0);
-        observerPane.add(img3, 38, 0);
-         observerPane.add(img4 , 37, 0);
+
         observerPane.add(l, 26, 0);
+        label1.setStyle("-fx-background-color: grey");
+        label2.setStyle("-fx-background-color: grey");
+                label3.setStyle("-fx-background-color: grey");
+                        label4.setStyle("-fx-background-color: grey");
+                        label5.setStyle("-fx-background-color: grey");
+                          labelHealth.setStyle("-fx-background-color: grey");
+                          labelScore.setStyle("-fx-background-color: grey");
+                          
+       observerPane.add(label1,35,5);
+       observerPane.add(label2,35,15);
+       observerPane.add(label3,35,25);
+       observerPane.add(label4,35,30);
+       observerPane.add(labelScore,35,17);
+       observerPane.add(labelHealth,35,7);
+       observerPane.add(label5,35,35);
+       score.setEditable(false);
+       health.setEditable(false);
+       
+        
         
         Scene scene = new Scene(borderPane);
         try {
@@ -158,10 +179,16 @@ public class MazeFX extends Application {
                             if (check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column])) {
                                 currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column] = 0;
                             }
+                           if(check.checkDead()){
+                               new Alert (Alert.AlertType.INFORMATION, "You Are Dead").showAndWait();
+                           d.load();}
+                           else
+                        
                             drawMaze();
                         }
                     }
                 } else if (event.getCode() == KeyCode.DOWN) {
+                    
                     Runner.getPlayer().setDir("down");
 
                     if (maze[Runner.getPlayer().row + 1][Runner.getPlayer().column].isWay()) {
@@ -186,7 +213,12 @@ public class MazeFX extends Application {
                            
                                 
                         }
-                        drawMaze();
+                      if(check.checkDead()){
+                               new Alert (Alert.AlertType.INFORMATION, "You Are Dead").showAndWait();
+                           d.load();}
+                           else
+                        
+                            drawMaze();
                         if (Runner.getPlayer().row == 29) {
                             new Alert(Alert.AlertType.INFORMATION, "GOAL!").showAndWait();
                         }
@@ -215,7 +247,12 @@ public class MazeFX extends Application {
                         if (check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column])) {
                             currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column] = 0;
                         }
-                        drawMaze();
+                       if(check.checkDead()){
+                               new Alert (Alert.AlertType.INFORMATION, "You Are Dead").showAndWait();
+                           d.load();}
+                           else
+                        
+                            drawMaze();
                     }
 
                 } else if (event.getCode() == KeyCode.LEFT) {
@@ -240,7 +277,12 @@ public class MazeFX extends Application {
                         if (check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column])) {
                             currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column] = 0;
                         }
-                        drawMaze();
+                         if(check.checkDead()){
+                               new Alert (Alert.AlertType.INFORMATION, "You Are Dead").showAndWait();
+                           d.load();}
+                           else
+                        
+                            drawMaze();
                     }
                 } else if (event.getCode() == KeyCode.SPACE) {
                     Bullet shot = new Bullet();
@@ -465,29 +507,14 @@ public class MazeFX extends Application {
 
     }
 
-    int i = 0;
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            //seconds++;
-            //System.out.println(i);
-            text = Integer.toString(i);
  
-            notification.setText(text);
-        
-        System.out.println(text);
-            i++;
-            
-         
-            
-        }
-
-    };
 
     public void drawMaze() {
         
-       
-
+       Runner.getPlayer().s.score+=(int)(Math.sqrt(t.i));
+        labelScore.setText(Integer.toString(Runner.getPlayer().s.score));
+        labelHealth.setText(Integer.toString(Runner.getPlayer().h.h));
+        score.setText(Integer.toString(Runner.getPlayer().h.h));
         maze = f.mazeFactory(currentMatrix);
         objectsPane.getChildren().clear();
         int i, j;
@@ -507,15 +534,13 @@ public class MazeFX extends Application {
 
     }
 
-    public void runTimer(){
-      timer.schedule(task, 0 , 1000);  
-     
-  
-   }
+    
     public static void main(String[] args) {
 
         try {
-            //new MazeFX().runTimer();
+             
+             t.run();
+             
             launch(args);
 
         } catch (ArrayIndexOutOfBoundsException e) {

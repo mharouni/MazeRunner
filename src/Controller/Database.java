@@ -61,6 +61,7 @@ public class Database {
                 System.out.println();
             }
             out.printf("%d %d ", Runner.getPlayer().row , Runner.getPlayer().column);
+            out.printf("%d %d",Runner.getPlayer().h.h,Runner.getPlayer().s.score);
             
             out.close();
         } catch (FileNotFoundException ex) {
@@ -86,6 +87,8 @@ public class Database {
             }
             Runner.getPlayer().row = scanner.nextInt();
             Runner.getPlayer().column = scanner.nextInt();
+            Runner.getPlayer().h.h=scanner.nextInt();
+            Runner.getPlayer().s.score=scanner.nextInt();
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

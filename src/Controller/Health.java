@@ -24,5 +24,7 @@ public class Health implements Observer {
         this.h+=h;
         if(this.h>3)
             this.h=3;
+        if(this.h<0)
+            this.h=0;
     }
 }
