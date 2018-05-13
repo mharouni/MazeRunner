@@ -50,7 +50,7 @@ public class CellFactory {
         else if(x==3)
             return new CriticalBomb();
         else if(x==4)
-            return new AmmoGift();
+            return new AmmoGift(Runner.getPlayer());
         else if(x==5)
             return new CoinGift();
         else if(x==6)

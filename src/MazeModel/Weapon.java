@@ -10,7 +10,11 @@ package MazeModel;
  * @author omarahmedheshamaziz
  */
 public class Weapon {
-    private int ammo= 6;
+
+    public Weapon() {
+        ammo =6;
+    }
+    private int ammo;
     Bullet b;
 
     public int getAmmo() {

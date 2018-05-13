@@ -25,7 +25,8 @@ public class Interactions {
         if(x.isUseful())
         {   
             
-            ((Gift)x).replenish();
+         AmmoGift  r= new AmmoGift(Runner.getPlayer());
+         r.Reload();
             return true;
         }
         return false;

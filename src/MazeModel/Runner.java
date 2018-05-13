@@ -22,7 +22,7 @@ public class Runner extends Cells implements Movable {
     private String dir;
     private Point position;
     private int health=3;
-    private Weapon w=new Weapon();
+    private Weapon w = new Weapon();
     private Image img = new Image(inStream);
     private static Runner Player;
     private int score=0;
@@ -41,6 +41,7 @@ public class Runner extends Cells implements Movable {
         row=0;
         column=1;
         currentState= new VulnerableRunner();
+        dir="down";
     }
 
     public void setCurrentState(RunnerState currentState) {

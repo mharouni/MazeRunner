@@ -120,12 +120,12 @@ public class MazeFX extends Application {
         img4.setFitWidth(35);
 
         img4.setFitHeight(21);
-        runTimer();
+        //runTimer();
       notification.setStyle("-fx-background-color: white");
       notification.setEditable(false);
       
-        observerPane.add(notification, 39, 1);
-        observerPane.add(img2, 39, 0);
+        //observerPane.add(notification, 39, 1);
+       // observerPane.add(img2, 39, 0);
         observerPane.add(img3, 38, 0);
          observerPane.add(img4 , 37, 0);
         observerPane.add(l, 26, 0);
@@ -243,15 +243,38 @@ public class MazeFX extends Application {
                         drawMaze();
                     }
                 } else if (event.getCode() == KeyCode.SPACE) {
-
                     Bullet shot = new Bullet();
+                    if(Runner.getPlayer().getW() != null)
+                    {
+                    
                     Node current2;
                     Image imageb = shot.getImage();
                     ImageView imgb = new ImageView(imageb);
                     imgb.setFitWidth(35);
                     imgb.setFitHeight(21);
                     current2 = imgb;
-
+                    }
+                    if (Runner.getPlayer().getW() != null)
+                        Runner.getPlayer().getW().setAmmo(Runner.getPlayer().getW().getAmmo()-1);
+                  
+                   
+                try{
+                        if(Runner.getPlayer().getW().getAmmo()==0)
+                            {
+                                AmmoGift m =new AmmoGift(Runner.getPlayer());
+                                m.destroy();
+                            }
+                }
+                catch (java.lang.NullPointerException e)
+                {
+                    System.out.println("NotEnoughAmmo");
+                }
+                   
+                      
+                   
+                   
+                    if(Runner.getPlayer().getW() != null)
+                    {
                     shot.column = Runner.getPlayer().column;
                     shot.row = Runner.getPlayer().row;
 
@@ -321,21 +344,15 @@ public class MazeFX extends Application {
                                 Runner.getPlayer().setScore(s);
                             }
                             drawMaze();
-
                             currentMatrix[shot.row][shot.column] = 0;
-
                             break;
                         case "right":
                             while (maze[shot.row][shot.column + 1].isWay() && !maze[shot.row][shot.column + 1].isUseful() && !maze[shot.row][shot.column + 1].isHarmful()) {
-
                                 currentMatrix[shot.row][shot.column + 1] = 8;
                                 currentMatrix[shot.row][shot.column] = 0;
                                 drawMaze();
-
                                 shot.column++;
-
                             }
-
                             if (maze[shot.row][shot.column + 1].isDestructible()) {
                                 currentMatrix[shot.row][shot.column + 1] = 0;
                                 int s = Runner.getPlayer().getScore();
@@ -343,12 +360,14 @@ public class MazeFX extends Application {
                                 Runner.getPlayer().setScore(s);
                             }
                             drawMaze();
-
                             currentMatrix[shot.row][shot.column] = 0;
-
                             break;
-
                     }
+                    }
+
+                    
+   
+               
 
                 } else if (event.getCode() == KeyCode.P) {
                     new Alert(Alert.AlertType.INFORMATION, "Game Paused \n Press Okay To Continue").showAndWait();

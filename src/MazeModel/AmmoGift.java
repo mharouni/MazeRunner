@@ -5,24 +5,29 @@
  */
 package MazeModel;
 
+import Controller.WeaponDecorator;
 import javafx.scene.image.Image;
 
 /**
  *
  * @author omarahmedheshamaziz
  */
-public class AmmoGift extends Cells implements Gift  {
+public class AmmoGift extends WeaponDecorator implements Gift  {
     private String path;
     private Image image= new Image(getClass().getResourceAsStream("lightsabericongreen.png"));
-    public void replenish()
+
+    public AmmoGift(Runner r) {
+        super(r);
+    }
+  /*  public void replenish()
     {
         int initAmmo=Runner.getPlayer().getW().getAmmo();
         if(initAmmo<6)
-            initAmmo++;
+            initAmmo=6;
         Runner.getPlayer().getW().setAmmo(initAmmo);
         Runner.getPlayer().s.update(100);
         
-    }
+    }*/
     
     @Override
     public boolean isHarmful() {
@@ -63,6 +68,11 @@ public class AmmoGift extends Cells implements Gift  {
     @Override
     public boolean isUseful() {
         return true;
+    }
+
+    @Override
+    public void replenish() {
+        
     }
     
 }
