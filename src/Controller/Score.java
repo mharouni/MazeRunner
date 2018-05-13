@@ -10,7 +10,7 @@ package Controller;
  * @author MaramH
  */
 public class Score implements Observer {
-        int score;
+        public int score;
     public Score(int i) {
         score=i;
     }

@@ -183,6 +183,8 @@ public class MazeFX extends Application {
                         }
                         if (check.checkGift(maze[Runner.getPlayer().row][Runner.getPlayer().column])) {
                             currentMatrix[Runner.getPlayer().row][Runner.getPlayer().column] = 0;
+                           
+                                
                         }
                         drawMaze();
                         if (Runner.getPlayer().row == 29) {
@@ -464,6 +466,8 @@ public class MazeFX extends Application {
     };
 
     public void drawMaze() {
+        
+       
 
         maze = f.mazeFactory(currentMatrix);
         objectsPane.getChildren().clear();
@@ -492,7 +496,7 @@ public class MazeFX extends Application {
     public static void main(String[] args) {
 
         try {
-            new MazeFX().runTimer();
+            //new MazeFX().runTimer();
             launch(args);
 
         } catch (ArrayIndexOutOfBoundsException e) {

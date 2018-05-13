@@ -22,6 +22,8 @@ public class CriticalBomb extends Cells implements Bomb {
             Runner.getPlayer().setCurrentState(new VulnerableRunner());
         else
             Runner.getPlayer().h.update(-2);
+        System.out.println(Runner.getPlayer().h.h);
+        
     }
      @Override
     public boolean isUseful() {

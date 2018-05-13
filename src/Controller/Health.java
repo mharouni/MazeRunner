@@ -12,7 +12,7 @@ import MazeModel.Runner;
  * @author MaramH
  */
 public class Health implements Observer {
-    int h;
+    public int h;
 
     public Health(int h) {
         this.h = h;

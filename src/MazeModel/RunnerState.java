@@ -11,5 +11,5 @@ package MazeModel;
  */
 public interface RunnerState {
     
-    public boolean immune();
+    public boolean immune( );
 }
