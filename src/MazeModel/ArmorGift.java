@@ -13,13 +13,11 @@ import javafx.scene.image.Image;
  */
 public class ArmorGift extends Cells implements Gift {
     private String path;
-    private Image image ; 
+    private Image image= new Image(getClass().getResourceAsStream("15-gray-metal-shield-png-image-picture-download.png"));
     public void replenish()
     {
         Runner.getPlayer().setCurrentState(new ImmuneRunner());
-                int s = Runner.getPlayer().getScore();
-        s+=100;
-        Runner.getPlayer().setScore(s);
+       Runner.getPlayer().s.update(100);
     }
     
     @Override

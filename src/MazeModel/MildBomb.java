@@ -17,17 +17,14 @@ public class MildBomb extends Cells implements Bomb {
     @Override
     public void causeDamage()
     {
-               int s = Runner.getPlayer().getScore();
-        s-=50;
-        Runner.getPlayer().setScore(s);
+        Runner.getPlayer().s.update(100);
         
         int initHealth=Runner.getPlayer().getHealth();
         if((Runner.getPlayer().immune()))
             Runner.getPlayer().setCurrentState(new VulnerableRunner());
         else
-            initHealth-=1;
-        Runner.getPlayer().setHealth(initHealth);
-        System.out.println(initHealth);
+          Runner.getPlayer().h.update(-1);
+        System.out.println(Runner.getPlayer().h.h);
     }
      @Override
     public boolean isUseful() {

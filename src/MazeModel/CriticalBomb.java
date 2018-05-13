@@ -13,19 +13,17 @@ import javafx.scene.image.Image;
  */
 public class CriticalBomb extends Cells implements Bomb {
     private String path;
-    private final Image image = new Image (getClass().getResourceAsStream("bomb64.png")); 
+    private final Image image = new Image (getClass().getResourceAsStream("Dynamite_SU.png")); 
     public void causeDamage()
     {
-                int s = Runner.getPlayer().getScore();
-        s-=100;
-        Runner.getPlayer().setScore(s);
+        Runner.getPlayer().s.update(-100);
         int initHealth=Runner.getPlayer().getHealth();
         if((Runner.getPlayer().immune()))
             Runner.getPlayer().setCurrentState(new VulnerableRunner());
         else
-            initHealth-=2;
-        Runner.getPlayer().setHealth(initHealth);
-        System.out.println(initHealth);
+            Runner.getPlayer().h.update(-2);
+        System.out.println(Runner.getPlayer().h.h);
+        
     }
      @Override
     public boolean isUseful() {
@@ -64,7 +62,7 @@ public class CriticalBomb extends Cells implements Bomb {
 
     @Override
     public Image getImage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return image;
     }
     
 }
