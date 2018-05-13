@@ -57,8 +57,7 @@ public class MazeFX extends Application {
     Timer timer = new Timer();
    int seconds=0;
   //SimpleStringProperty sec = new SimpleStringProperty(String.valueOf(seconds));
-
-
+  Label timerLabel = new Label();
 
     Interactions check = new Interactions();
     GridPane objectsPane = new GridPane();
@@ -83,8 +82,8 @@ public class MazeFX extends Application {
         observerPane.setStyle("-fx-background-color: transparent");
 
         initializeMaze();
-        Label myLabel = new Label("Start");
-         myLabel.textProperty().bind(Bindings.convert(new SimpleStringProperty(String.valueOf(seconds))));
+      
+       //  myLabel.textProperty().bind(Bindings.convert(new SimpleStringProperty(String.valueOf(seconds))));
      Label l = new Label("Lives");
      l.setStyle("-fx-background-color: white");
     ImageView img2 = new ImageView(new HealthGift().getImage());
@@ -95,7 +94,7 @@ public class MazeFX extends Application {
                             img3.setFitWidth(35);
 
                             img3.setFitHeight(21);
-                            observerPane.add(myLabel, 27, 0);
+                            observerPane.add(timerLabel, 27, 0);
      observerPane.add(img2 , 29, 0);
      observerPane.add(img3 , 28, 0);
    //  observerPane.add(img2 , 27, 0);
@@ -350,6 +349,7 @@ observerPane.add(l , 26, 0);
                     int matrix[][] = d.load();
                     maze = f.mazeFactory(matrix);
                     objectsPane.getChildren().clear();
+                    runnerPane.getChildren().clear();
                     int i, j;
         for (i = 0; i < 30; i++) {
             for (j = 0; j < 30; j++) {//Label l = new Label();
@@ -362,7 +362,20 @@ observerPane.add(l , 26, 0);
                 objectsPane.add(img, j, i);
             }
         }
-                    
+        for (i = 0; i < 30; i++) {
+            for (j = 0; j < 30; j++) {
+                Image image2 = null;
+                ImageView img = new ImageView(image2);
+                img.setFitWidth(35);
+                img.setFitHeight(21);
+                runnerPane.add(img, j, i);
+            }
+        }
+                Image runner = Runner.getPlayer().getImage();
+        ImageView img1 = new ImageView(runner);
+        img1.setFitWidth(35);
+        img1.setFitHeight(21);
+             runnerPane.add(img1, Runner.getPlayer().column, Runner.getPlayer().row);
                 }
                 event.consume();
             });
@@ -422,13 +435,15 @@ observerPane.add(l , 26, 0);
         borderPane.getChildren().add(observerPane);
    }
    
-   int i;
+   int i = 0;
 TimerTask task = new TimerTask(){
         @Override
         public void run() {
-            seconds++;
+            //seconds++;
             System.out.println(i);
+            
             i++;
+            timerLabel.setText(Integer.toString(i));
         }
     
 };
