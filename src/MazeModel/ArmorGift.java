@@ -17,6 +17,9 @@ public class ArmorGift extends Cells implements Gift {
     public void replenish()
     {
         Runner.getPlayer().setCurrentState(new ImmuneRunner());
+                int s = Runner.getPlayer().getScore();
+        s+=100;
+        Runner.getPlayer().setScore(s);
     }
     
     @Override

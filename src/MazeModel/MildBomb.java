@@ -17,6 +17,10 @@ public class MildBomb extends Cells implements Bomb {
     @Override
     public void causeDamage()
     {
+               int s = Runner.getPlayer().getScore();
+        s-=50;
+        Runner.getPlayer().setScore(s);
+        
         int initHealth=Runner.getPlayer().getHealth();
         if((Runner.getPlayer().immune()))
             Runner.getPlayer().setCurrentState(new VulnerableRunner());
